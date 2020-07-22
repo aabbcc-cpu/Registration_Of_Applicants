@@ -407,13 +407,9 @@ class Ui_MainWindow(object):
 
     def check_mcb(self):
         self.female_cb.setChecked(False)
-        if self.male_cb.isChecked():
-            self.female_cb.setChecked(False)
 
     def check_fcb(self):
         self.male_cb.setChecked(False)
-        if self.female_cb.isChecked():
-            self.male_cb.setChecked(False)
 
     def registration(self):
         # Подключение к базе данных
