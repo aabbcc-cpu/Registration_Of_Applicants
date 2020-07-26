@@ -36,6 +36,7 @@ CREATE TABLE applicants (id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
                                                     point4 INTEGER DEFAULT NULL,
                                                     passing_year4 TEXT DEFAULT NULL);
 INSERT INTO "applicants" VALUES(1,'1','1','1','М','1','1','1','требуется','1',1,1,'1','1','1',1,1,'1',1,'1','1',1,1,'1','1',1,'1','1',1,'1','1',1,'1',NULL,NULL,NULL);
+INSERT INTO "applicants" VALUES(2,'1','1','1','мужской','1','1','1','требуется','1',11,1,'1','1','1',1,1,'1',1,'1','1',1,1,'1','1',1,'1','1',1,'1','1',1,'1',NULL,NULL,NULL);
 DELETE FROM "sqlite_sequence";
-INSERT INTO "sqlite_sequence" VALUES('applicants',1);
+INSERT INTO "sqlite_sequence" VALUES('applicants',2);
 COMMIT;

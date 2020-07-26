@@ -13,7 +13,7 @@ from PyQt5.Qt import QLineEdit
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 
-class Ui_MainWindow(object):
+class Ui_MainWindow(QtWidgets.QMainWindow):
     insert_error = False
 
     CSS_line_edit = '''QLineEdit {
@@ -723,8 +723,11 @@ class Ui_MainWindow(object):
         self.year_delivery4_line_edit.setText("")
 
     def export_db(self):
+        dirlist = QtWidgets.QFileDialog.getExistingDirectory(self, "Выбрать папку", ".")
+        save_path = dirlist + "/dump.sql"
+
         conn = sqlite3.connect("database\\database.s3db")
-        with open('dump.sql', 'w') as f:
+        with open(save_path, 'w') as f:
             for line in conn.iterdump():
                 f.write('%s\n' % line)
         conn.close()
