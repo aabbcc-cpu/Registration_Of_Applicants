@@ -726,33 +726,34 @@ class Ui_MainWindow(QtWidgets.QMainWindow):
         dirlist = QtWidgets.QFileDialog.getExistingDirectory(self, "Выбрать папку", ".")
         save_path = dirlist + "/dump.sql"
 
-        conn = sqlite3.connect("database\\database.s3db")
-        with open(save_path, 'w') as f:
-            for line in conn.iterdump():
-                f.write('%s\n' % line)
-        conn.close()
+        if len(dirlist) > 0:
+            conn = sqlite3.connect("database\\database.s3db")
+            with open(save_path, 'w') as f:
+                for line in conn.iterdump():
+                    f.write('%s\n' % line)
+            conn.close()
 
-        msg = QtWidgets.QMessageBox()
-        msg.setIcon(QtWidgets.QMessageBox.Information)
-        msg.setWindowIcon(QtGui.QIcon("img\\export.svg"))
-        msg.setText("База данных была успешно экспортирована.")
-        msg.setWindowTitle("Export")
-        ok = msg.addButton('OK', QtWidgets.QMessageBox.AcceptRole)
-        ok.setFixedSize(100, 25)
-        ok.setStyleSheet("QPushButton {"
-                         "background-color: #02A3D6;"
-                         "border-radius: 10px;"
-                         "color: white;"
-                         "text-align: center;"
-                         "text-decoration: none;"
-                         "display: inline-block;"
-                         "font-family: JetBrains Mono ExtraBold;"
-                         "font-size: 14px;"
-                         "}"
-                         "QPushButton:hover {"
-                         "background-color: #00C1FF;"
-                         "}")
-        msg.exec_()
+            msg = QtWidgets.QMessageBox()
+            msg.setIcon(QtWidgets.QMessageBox.Information)
+            msg.setWindowIcon(QtGui.QIcon("img\\export.svg"))
+            msg.setText("База данных была успешно экспортирована.")
+            msg.setWindowTitle("Export")
+            ok = msg.addButton('OK', QtWidgets.QMessageBox.AcceptRole)
+            ok.setFixedSize(100, 25)
+            ok.setStyleSheet("QPushButton {"
+                             "background-color: #02A3D6;"
+                             "border-radius: 10px;"
+                             "color: white;"
+                             "text-align: center;"
+                             "text-decoration: none;"
+                             "display: inline-block;"
+                             "font-family: JetBrains Mono ExtraBold;"
+                             "font-size: 14px;"
+                             "}"
+                             "QPushButton:hover {"
+                             "background-color: #00C1FF;"
+                             "}")
+            msg.exec_()
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
