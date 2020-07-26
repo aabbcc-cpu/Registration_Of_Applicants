@@ -1,5 +1,6 @@
 .idea
 ui/__pycache__/
+demo
 icon.ico
 reg_of_applicants.exe
 reg_of_applicants.lnk
